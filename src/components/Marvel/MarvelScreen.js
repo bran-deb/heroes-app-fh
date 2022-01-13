@@ -1,11 +1,11 @@
 import React from 'react'
 import { HeroList } from '../heroes/HeroList'
 
-export const DcScreen = () => {
+export const MarvelScreen = () => {
     return (
         <div>
-            <h1>DC Screen</h1>
-            <HeroList publisher='DC Comics' />
+            <h1>MarvelScreen</h1>
+            <HeroList publisher='Marvel Comics' />
         </div>
     )
 }
