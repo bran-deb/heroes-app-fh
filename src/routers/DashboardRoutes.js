@@ -11,7 +11,7 @@ export const DashboardRoutes = () => {
     return (
         <>
             <Navbar />
-            <div>
+            <div className='container mt-2'>
                 <Routes>
                     <Route path="/marvel" element={<MarvelScreen />} />
                     <Route path="/dc" element={<DcScreen />} />
