@@ -12,7 +12,7 @@ export const LoginScreen = () => {
     }
 
     return (
-        <div className='container mt-5'>
+        <div className='container mt-5 animate__animated animate__fadeIn'>
             <h1>LoginScreen</h1>
             <hr />
 
