@@ -27,7 +27,7 @@ export const HeroCard = (hero) => {
                         </p>
 
                         {/* este boton genera una url con el id */}
-                        <Link to={`./hero/${id}`}>
+                        <Link to={`/hero/${id}`}>
                             Mas...
                         </Link>
 
