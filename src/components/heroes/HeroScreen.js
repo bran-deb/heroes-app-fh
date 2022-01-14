@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { getHeroById } from '../../selectors/getHeroById'
 
@@ -8,7 +8,9 @@ export const HeroScreen = () => {
     //permite cambiar de rutas
     const navigate = useNavigate();
 
-    const hero = getHeroById(heroeId)
+    // memorizamos y llama getHeroById(heroeId) si [heroeId] cambia
+    const hero = useMemo(() => getHeroById(heroeId), [heroeId])
+    // const hero = getHeroById(heroeId)
     //si el url no es valido se va a la pagina principal
     if (!hero) {
         return <Navigate to='/' />
