@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import queryString from 'query-string'
 
 import { heroes } from '../../data/heroes'
 import { useForm } from '../../hooks/useForm'
 import { HeroCard } from '../heroes/HeroCard'
+import { getHeroesByName } from '../../selectors/getHeroesByName'
 
 export const SearchScreen = () => {
     //lo usamos para nuevas rutas
@@ -21,7 +22,9 @@ export const SearchScreen = () => {
 
     const { searchText } = formValues
 
-    const heroesFiltered = heroes
+    // const heroesFiltered = getHeroesByName(searchText)
+    //se renderiza solo cuando preciona el boton y cambia el query(q)
+    const heroesFiltered = useMemo(() => getHeroesByName(q), [q])
 
     const handleSearch = (e) => {
         e.preventDefault()
@@ -60,6 +63,21 @@ export const SearchScreen = () => {
                 <div className='col-7'>
                     <h4>Results</h4>
                     <hr />
+
+                    {
+                        (q === '')
+                        &&
+                        <div className='alert alert-info'>
+                            Search a Hero
+                        </div>
+                    }
+                    {
+                        (q !== '' && heroesFiltered.length === 0)
+                        &&
+                        <div className='alert alert-danger'>
+                            There is no a hero with {q}
+                        </div>
+                    }
                     {
                         heroesFiltered.map(hero => (
                             <HeroCard
