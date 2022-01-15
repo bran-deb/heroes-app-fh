@@ -1,12 +1,22 @@
 import React from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import queryString from 'query-string'
+
 import { heroes } from '../../data/heroes'
 import { useForm } from '../../hooks/useForm'
 import { HeroCard } from '../heroes/HeroCard'
 
 export const SearchScreen = () => {
+    //lo usamos para nuevas rutas
+    const navigate = useNavigate()
+    //se usa para obtener datos de la localizacion
+    const location = useLocation()
+    //usamos la query(q) de la localizacion de la busqueda
+    //cuando la query no tiene valor es '' para que no marque error(undefined)
+    const { q = '' } = queryString.parse(location.search)
 
     const [formValues, handleInputChange] = useForm({
-        searchText: ''          //inicial state vacio
+        searchText: q          //inicial state es la query del url de busqueda
     })
 
     const { searchText } = formValues
@@ -16,6 +26,8 @@ export const SearchScreen = () => {
     const handleSearch = (e) => {
         e.preventDefault()
         console.log(searchText)
+        //navegamos a la url de la busqueda
+        navigate(`?q=${searchText}`)
     }
 
     return (
