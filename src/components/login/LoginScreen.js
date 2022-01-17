@@ -1,13 +1,23 @@
 import React from 'react'
+import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from '../../auth/AuthContext';
+import { types } from '../../types/types';
 
 export const LoginScreen = () => {
 
     const navigate = useNavigate();
+    const { dispatch } = useContext(AuthContext)
 
     const handleLogin = (e) => {
         e.preventDefault()
         //remplaza la ruta anterior por la ruta de destino
+        dispatch({
+            type: types.login,
+            payload: {
+                name: 'brand'
+            }
+        })
         navigate("/", { replace: true });
     }
 
