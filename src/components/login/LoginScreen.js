@@ -5,6 +5,8 @@ import { AuthContext } from '../../auth/AuthContext';
 import { types } from '../../types/types';
 
 export const LoginScreen = () => {
+    //toma la ultima ruta del localStorage
+    const lastPath = localStorage.getItem('lastPath') || '/'
 
     const navigate = useNavigate();
     const { dispatch } = useContext(AuthContext)
@@ -18,7 +20,8 @@ export const LoginScreen = () => {
                 name: 'brand'
             }
         })
-        navigate("/", { replace: true });
+        //navega a la ultima ruta (lastPath)
+        navigate(lastPath, { replace: true });
     }
 
     return (
