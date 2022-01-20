@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <authReducer/> debe de mostrarse correctamente 1`] = `<authReducer />`;
