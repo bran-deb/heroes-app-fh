@@ -11,8 +11,7 @@ export const LoginScreen = () => {
     const navigate = useNavigate();
     const { dispatch } = useContext(AuthContext)
 
-    const handleLogin = (e) => {
-        e.preventDefault()
+    const handleLogin = () => {
         //remplaza la ruta anterior por la ruta de destino
         dispatch({
             type: types.login,
